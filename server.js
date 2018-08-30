@@ -42,6 +42,5 @@ Local port:   http://localhost:${port}/`
 //Body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 // //static Files
 // app.use(express.static(path.join(__dirname, 'public')));

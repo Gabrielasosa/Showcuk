@@ -5,24 +5,24 @@ const bcrypt = require("bcryptjs");
 
 //Load User Model
 const User = require("../../models/User");
-//route    GET api/users/test
+//route    GET api/user/test
 //desc     Test post route
 //access   Public
 router.get("/test", (req, res) => res.json({ message: "Users works" }));
 
-//route    GET api/users/register
+//route    GET api/user/register
 //desc     Register User
 //access   Public
 
 router.post("/register", (req, res) => {
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
-      return res.status(400).json({ email: "Email already registered" });
+      return res.status(400).json({ email: "Email already registrated" });
     } else {
       const avatar = gravatar.url(req.body.email, {
-        s: "200", //tamaño
-        r: "pg", //rating
-        d: "mm" //default
+        s: "200",
+        r: "pg",
+        d: "mm"
       });
       const newUser = new User({
         name: req.body.name,

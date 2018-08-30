@@ -8,6 +8,12 @@ const posts = require("./routes/api/posts");
 
 const app = express();
 
+//Middlewares
+
+//Body parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 //conguracion de la BD
 const db = require("./config/keys").mongoURI;
 
@@ -37,10 +43,5 @@ Local port:   http://localhost:${port}/`
   )
 );
 
-//Middlewares
-
-//Body parser
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 // //static Files
 // app.use(express.static(path.join(__dirname, 'public')));

@@ -1,7 +1,9 @@
 const Validator = require("validator");
 const isEmpty = require("./isEmpty");
+
 module.exports = function validateRegisterInput(data) {
   let errors = {};
+
   data.name = !isEmpty(data.name) ? data.name : "";
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
@@ -18,8 +20,9 @@ module.exports = function validateRegisterInput(data) {
   if (Validator.isEmpty(data.email)) {
     errors.email = "El Email es obligatorio";
   }
+
   if (!Validator.isEmail(data.email)) {
-    errors.email = "Email no valido";
+    errors.email = "Email No valido";
   }
   //password validate
   if (Validator.isEmpty(data.password)) {
@@ -35,6 +38,7 @@ module.exports = function validateRegisterInput(data) {
   if (!Validator.equals(data.password, data.password2)) {
     errors.password2 = "La contraseña debe coincidir";
   }
+
   return {
     errors,
     isValid: isEmpty(errors)

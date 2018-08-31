@@ -8,6 +8,8 @@ const passport = require("passport");
 
 //Load input validation
 const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login");
+
 //Load User Model
 const User = require("../../models/User");
 
@@ -26,11 +28,11 @@ router.post("/register", (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
+
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       errors.email = "Email ya registrado";
       return res.status(400).json(errors);
-      // return res.status(400).json({ email: "registrado" });
     } else {
       const avatar = gravatar.url(req.body.email, {
         s: "200",
@@ -68,9 +70,16 @@ router.post("/login", (req, res) => {
   const password = req.body.password;
   //find user by email
   User.findOne({ email }).then(user => {
+    const { errors, isValid } = validateLoginInput(req.body);
+
+    //chek validation
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
     //check for user
     if (!user) {
-      return res.status(404).json({ email: "User not Found" });
+      errors.email = "Usuario no encontrado";
+      return res.status(404).json(errors);
     }
 
     //check password
@@ -92,9 +101,8 @@ router.post("/login", (req, res) => {
           }
         );
       } else {
-        return res.status(400).json({
-          password: "Password incorrect"
-        });
+        errors.password = "Contraseña incorrecta";
+        return res.status(400).json(errors);
       }
     });
   });

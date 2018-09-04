@@ -12,14 +12,14 @@ const Profile = require("../../models/Profile");
 //Post validate
 const validatePostInput = require("../../validation/post");
 /*
-  *route    GET api/post/test
+  *route    GET api/posts/test
   *desc     Test post route
   *access   Public
 */
 router.get("/test", (req, res) => res.json({ message: "post works" }));
 
 /*
-  *route    GET api/post
+  *route    GET api/posts
   *desc     Get post
   *access   Public
 */
@@ -28,12 +28,12 @@ router.get("/", (req, res) => {
     .sort({ date: -1 })
     .then(posts => res.json(posts))
     .catch(err =>
-      res.status(404).json({ nopostsfound: "no se encuentran publicaciones" })
+      res.status(404).json({ nopostsfound: "no se encuentran publicaciónes" })
     );
 });
 
 /*
-  *route    GET api/post/:id
+  *route    GET api/posts/:id
   *desc     Get post by id
   *access   Public
 */
@@ -48,7 +48,7 @@ router.get("/:id", (req, res) => {
 });
 
 /*
-  *route    POST api/post
+  *route    POST api/posts
   *desc     Create post
   *access   Private
 */
@@ -77,8 +77,8 @@ router.post(
 );
 
 /*
-  *route    GET api/post/:id
-  *desc     Get post by id
+  *route    DELETE api/posts/:id
+  *desc     delete post
   *access   Public
 */
 router.delete(
@@ -100,9 +100,160 @@ router.delete(
         .catch(err =>
           res
             .status(404)
-            .json({ postnotfound: "No se encuentra la publicacion" })
+            .json({ postnotfound: "No se encuentra la publicación" })
         );
     });
   }
 );
+
+/*
+  *route    POST api/posts/like/:id
+  *desc     Like post 
+  *access   Private
+*/
+router.post(
+  "/like/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      Post.findById(req.params.id)
+        .then(post => {
+          if (
+            post.likes.filter(like => like.user.toString() === req.user.id)
+              .length > 0
+          ) {
+            return res.status(400).json({
+              alreadyliked: `Al usuario le gustó esta publicación`
+              // alreadyliked: `Al ${user.name} le gustó esta publicación`
+            });
+          }
+          //add user id to liikes
+          post.likes.unshift({ user: req.user.id });
+          post.save().then(post => res.json(post));
+        })
+        .catch(err =>
+          res
+            .status(404)
+            .json({ postnotfound: "No se encuentra la publicación" })
+        );
+    });
+  }
+);
+
+/*
+  *route    POST api/posts/unlike/:id
+  *desc     Unlike post
+  *access   Private
+*/
+router.post(
+  "/unlike/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      Post.findById(req.params.id)
+        .then(post => {
+          if (
+            post.likes.filter(like => like.user.toString() === req.user.id)
+              .length === 0
+          ) {
+            return res.status(400).json({
+              notliked: `Aun no tienes me gusta en esta publicación`
+            });
+          }
+          //Get remove index
+          const removeIndex = post.likes
+            .map(item => item.user.toString())
+            .indexOf(req.user.id);
+
+          //splice out of array
+          post.likes.splice(removeIndex, 1);
+
+          //save
+          post.save().then(post => res.json(post));
+        })
+        .catch(err =>
+          res
+            .status(404)
+            .json({ postnotfound: "No se encuentra la publicación" })
+        );
+    });
+  }
+);
+
+/*
+  *route    POST api/posts/comment/:id
+  *desc     Add comment to post
+  *access   Private
+*/
+router.post(
+  "/comment/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validatePostInput(req.body);
+
+    // Check Validation
+    if (!isValid) {
+      // If any errors, send 400 with errors object
+      return res.status(400).json(errors);
+    }
+
+    Post.findById(req.params.id)
+      .then(post => {
+        const newComment = {
+          text: req.body.text,
+          name: req.body.name,
+          avatar: req.body.avatar,
+          user: req.user.id
+        };
+
+        // Add to comments array
+        post.comments.unshift(newComment);
+
+        // Save
+        post.save().then(post => res.json(post));
+      })
+      .catch(err =>
+        res.status(404).json({ postnotfound: "No se encuentra la publicación" })
+      );
+  }
+);
+/*
+  *route   DELETE api/posts/comment/:id/:comment_id
+  *desc    Remove comment from post
+  *access  Private
+*/
+
+router.delete(
+  "/comment/:id/:comment_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Post.findById(req.params.id)
+      .then(post => {
+        // Check to see if comment exists
+        if (
+          post.comments.filter(
+            comment => comment._id.toString() === req.params.comment_id
+          ).length === 0
+        ) {
+          return res
+            .status(404)
+            .json({ commentnotexists: "El comentario no existe" });
+        }
+
+        // Get remove index
+        const removeIndex = post.comments
+          .map(item => item._id.toString())
+          .indexOf(req.params.comment_id);
+
+        // Splice comment out of array
+        post.comments.splice(removeIndex, 1);
+
+        post.save().then(post => res.json(post));
+      })
+      .catch(err =>
+        res.status(404).json({ postnotfound: "No se encuentra la publicación" })
+      );
+  }
+);
+
 module.exports = router;

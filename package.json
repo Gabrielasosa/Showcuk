@@ -1,13 +1,13 @@
 {
   "name": "showcuk",
   "version": "1.0.0",
-  "description": "Social network for chefs",
+  "description": "Social media chefs",
   "main": "server.js",
   "scripts": {
-    "client-install": "cd ../client",
+    "client-install": "npm install --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "npm start",
+    "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Gabriela Sosa",

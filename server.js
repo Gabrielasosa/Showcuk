@@ -36,7 +36,7 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
-//Puerto del servidor
+//Port server
 const port = process.env.PORT || 3100;
 
 // //starting the server
@@ -44,9 +44,6 @@ app.listen(port, () =>
   console.log(
     `Server runnung on port: ${port}` +
       ` 
-Local port:   http://localhost:${port}/`
+Local port:   http://localhost:${port}`
   )
 );
-
-// //static Files
-// app.use(express.static(path.join(__dirname, 'public')));

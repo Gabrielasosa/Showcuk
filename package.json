@@ -1,17 +1,21 @@
 {
-  "name": "showcup",
+  "name": "showcuk",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Social network for chefs",
+  "main": "server.js",
   "scripts": {
+    "client-install": "cd ../client",
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Gabriela Sosa",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "currently": "0.0.8",
     "express": "^4.16.3",
     "gravatar": "^1.6.0",
     "jsonwebtoken": "^8.3.0",

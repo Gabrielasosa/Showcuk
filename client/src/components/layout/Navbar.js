@@ -3,8 +3,8 @@ import React, { Component } from "react";
 class Navbar extends Component {
   render() {
     return (
-      <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div className="">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <button
             className="navbar-toggler"
             type="button"
@@ -37,16 +37,16 @@ class Navbar extends Component {
                 </a>
               </li>
             </ul>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url('/login') }}">
-                  <i class="fas fa-sign-in-alt" />
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link" href="{{ url('/login') }}">
+                  <i className="fas fa-sign-in-alt" />
                   <span> Acceder </span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url('/register') }}">
-                  <i class="fas fa-user" /> <span> Registrate </span>
+              <li className="nav-item">
+                <a className="nav-link" href="{{ url('/register') }}">
+                  <i className="fas fa-user" /> <span> Registrate </span>
                 </a>
               </li>
             </ul>

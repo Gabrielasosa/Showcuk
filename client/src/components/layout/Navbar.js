@@ -1,10 +1,59 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
 
 class Navbar extends Component {
+  onLogoutClick(e) {
+    e.preventDefault();
+    this.props.logoutUser();
+  }
+
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
+    const authLinks = (
+      //la funcion solo se muestra cuando un usuario inicia sesion
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <a
+            href=""
+            onClick={this.onLogoutClick.bind(this)}
+            className="nav-link"
+          >
+            <img
+              className="rounded-circle"
+              src={user.avatar}
+              alt={user.name}
+              style={{ width: "40px", marginRight: "8px" }}
+              title="Debes tener un Gravatar enlazado a tu correo electrónico para mostrar una imagen"
+            />
+            <i class="fas fa-sign-out-alt" /> <span> Salir</span>
+          </a>
+        </li>
+      </ul>
+    );
+
+    const guestLinks = (
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <Link className="nav-link" to="/login">
+            <i className="fas fa-sign-in-alt" /> <span>Acceder</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/register">
+            <i className="fas fa-user" /> <span> Registrate </span>
+          </Link>
+        </li>
+      </ul>
+    );
+
     return (
       <div className="">
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> */}
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <button
             className="navbar-toggler"
             type="button"
@@ -17,39 +66,30 @@ class Navbar extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" to="/">
               S H O W C U K
-            </a>
+            </Link>
+
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Home <span className="sr-only" />
-                </a>
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+                <span className="sr-only" />
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/">
                   Link
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link " href="#">
-                  otro
-                </a>
+                <Link className="nav-link" to="/">
+                  Link
+                </Link>
               </li>
             </ul>
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link" href="{{ url('/login') }}">
-                  <i className="fas fa-sign-in-alt" />
-                  <span> Acceder </span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="{{ url('/register') }}">
-                  <i className="fas fa-user" /> <span> Registrate </span>
-                </a>
-              </li>
-            </ul>
+
+            {isAuthenticated ? authLinks : guestLinks}
           </div>
         </nav>
       </div>
@@ -57,4 +97,16 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Navbar);

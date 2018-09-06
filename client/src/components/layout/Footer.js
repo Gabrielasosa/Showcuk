@@ -3,64 +3,74 @@ import React from "react";
 export default () => {
   return (
     <footer>
-      <div class="card text-center ">
-        <div class="card-body">
-          <section class="contact-section bg-black">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-4 mb-3 mb-md-0">
-                  <div class="card py-4 h-100">
-                    <div class="card-body text-center">
-                      <i class="fas fa-map-marked-alt text-primary mb-2" />
-                      <h4 class="text-uppercase m-0">Dirección</h4>
-                      <hr class="my-4" />
-                      <div class="small text-black-50">
+      <br />
+      <div className="card text-center card  mb-3">
+        <div className="card-body">
+          <section className="contact-section bg-black">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-4 mb-3 mb-md-0">
+                  <div className="card py-4 h-100">
+                    <div className="card-body text-center">
+                      <i className="fas fa-map-marked-alt text-info mb-2" />
+                      <h4 className="text-uppercase m-0 card-title">
+                        Dirección
+                      </h4>
+                      <hr className="my-4" />
+                      <div className="small text-black-50 card-text">
                         4923 Market Street, Orlando FL
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="col-md-4 mb-3 mb-md-0">
-                  <div class="card py-4 h-100">
-                    <div class="card-body text-center">
-                      <i class="fas fa-envelope text-primary mb-2" />
-                      <h4 class="text-uppercase m-0">Email</h4>
-                      <hr class="my-4" />
-                      <div class="small text-black-50">
+                <div className="col-md-4 mb-3 mb-md-0">
+                  <div className="card py-4 h-100">
+                    <div className="card-body text-center">
+                      <i className="fas fa-envelope text-info mb-2" />
+                      <h4 className="text-uppercase m-0 card-title">Email</h4>
+                      <hr className="my-4" />
+                      <div className="small text-black-50 card-text">
                         <span>gabrielasosaft@gmail.com</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="col-md-4 mb-3 mb-md-0">
-                  <div class="card py-4 h-100">
-                    <div class="card-body text-center">
-                      <i class="fas fa-mobile-alt text-primary mb-2" />
-                      <h4 class="text-uppercase m-0">TELÉFONO</h4>
-                      <hr class="my-4" />
-                      <div class="small text-black-50">+1 (555) 902-8832</div>
+                <div className="col-md-4 mb-3 mb-md-0">
+                  <div className="card py-4 h-100">
+                    <div className="card-body text-center">
+                      <i className="fas fa-mobile-alt text-info mb-2" />
+                      <h4 className="text-uppercase m-0 card-title">
+                        TELÉFONO
+                      </h4>
+                      <hr className="my-4" />
+                      <div className="small text-black-50 card-text">
+                        +34 625-395-5532
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="social d-flex justify-content-center">
-                <a href="#" class="mx-2">
-                  <i class="fab fa-linkedin" />
+              <div className="social d-flex justify-content-center">
+                <a
+                  href="https://www.linkedin.com/in/gabriela-sosa-gavil%C3%A1n-1a3821162/"
+                  className="mx-2 text-info"
+                >
+                  <i className="fab fa-linkedin" />
                 </a>
-                <a href="#" class="mx-2">
-                  <i class="fab fa-facebook-f" />
-                </a>
-                <a href="#" class="mx-2">
-                  <i class="fab fa-github" />
+                <a
+                  href="https://github.com/Gabrielasosa/Showcuk"
+                  className="mx-2 text-info"
+                >
+                  <i className="fab fa-github" />
                 </a>
               </div>
             </div>
           </section>
         </div>
-        <div class="card-footer text-muted">
+        <div className="card-footer text-muted">
           {" "}
           Gabriela Sosa &copy;
           {new Date().getFullYear()}

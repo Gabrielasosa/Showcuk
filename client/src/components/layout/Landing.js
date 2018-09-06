@@ -1,33 +1,50 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
 import "./style.css";
+
 class Landing extends Component {
+  componentDidMount() {
+    //compruebo que el usuario esta autenticado y luego lo redirecciono
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
   render() {
     return (
-      <div className="landing">
-        <div id="capa_a_ocultar ">
-          <video
-            autoplay="autoplay"
-            loop="loop"
-            preload="auto"
-            className="embed-responsive embed-responsive-16by9 "
-          >
-            <source src="../../img/showcuk.mp4" type="video/mp4" />
-          </video>
-        </div>
+      <div className="">
+        <div className="landing" />
+        <video
+          autoplay="autoplay"
+          loop="loop"
+          preload="auto"
+          className="embed-responsive embed-responsive-16by9 "
+        >
+          <source
+            src="../../img/showcuk.mp4"
+            type="video/mp4"
+            className="vid"
+          />
+        </video>
         <div className="dark-overlay landing-inner text-light">
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
                 <h1 className="display-3 mb-4">Showcuk</h1>
-                <p className="lead">Tu Chef a domicilio en casa</p>
+                <p className="lead">Registrate y conoce mas Chefs</p>
                 <hr />
-                <a href="#" className="btn btn-lg btn-info mr-2">
-                  <i className="fas fa-sign-in-alt" />
-                  <span> Acceder </span>
-                </a>
-                <a href="#" className="btn btn-lg btn-light">
+
+                <Link className="btn btn-outline-info btn-lg  mr-2" to="/login">
+                  <i className="fas fa-sign-in-alt" /> <span>Acceder</span>
+                </Link>
+
+                <Link
+                  className="btn btn-lg btn-outline-secondary btn-lg  mr-2"
+                  to="/register"
+                >
                   <i className="fas fa-user" /> <span> Registrate </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -36,4 +53,14 @@ class Landing extends Component {
     );
   }
 }
-export default Landing;
+
+Landing.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+//cuando el usuario este conectado y atenticado no vera la opcion de registrarse
+//solo lo vera al cerrar sesion
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Landing);

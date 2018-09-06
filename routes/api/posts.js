@@ -178,7 +178,7 @@ router.post(
         );
     });
   }
-);
+); //fin del post
 
 /*
   *route    POST api/posts/comment/:id
@@ -193,7 +193,7 @@ router.post(
 
     // Check Validation
     if (!isValid) {
-      // If any errors, send 400 with errors object
+      // si hay algun error, envia el objeto del error
       return res.status(400).json(errors);
     }
 
@@ -216,7 +216,7 @@ router.post(
         res.status(404).json({ postnotfound: "No se encuentra la publicación" })
       );
   }
-);
+); //fin del post
 /*
   *route   DELETE api/posts/comment/:id/:comment_id
   *desc    Remove comment from post
@@ -229,7 +229,8 @@ router.delete(
   (req, res) => {
     Post.findById(req.params.id)
       .then(post => {
-        // Check to see if comment exists
+        // verifica si existe un error
+
         if (
           post.comments.filter(
             comment => comment._id.toString() === req.params.comment_id
@@ -254,6 +255,6 @@ router.delete(
         res.status(404).json({ postnotfound: "No se encuentra la publicación" })
       );
   }
-);
+); //fin de delete
 
 module.exports = router;

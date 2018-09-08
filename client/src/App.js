@@ -12,6 +12,8 @@ import Register from "./components/register/Register";
 import Login from "./components/login/login";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import Dashboard from "./components/dashboard/Dashboard";
+import { clearCurrentProfile } from "./actions/profileActions";
 
 // verificacion del token
 if (localStorage.jwtToken) {
@@ -27,6 +29,8 @@ if (localStorage.jwtToken) {
   if (decoded.exp < currentTime) {
     // desconeccion del usuario
     store.dispatch(logoutUser());
+    //limpiar el perfil al desconectarse el usuario
+    store.dispatch(clearCurrentProfile());
 
     //redirecciona al login cuando se desconecta el usuario
     window.location.href = "/login";
@@ -43,6 +47,7 @@ class App extends Component {
             <Switch className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/dashboard" component={Dashboard} />
             </Switch>
             <Footer />
           </div>

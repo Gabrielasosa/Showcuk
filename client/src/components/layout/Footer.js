@@ -1,10 +1,13 @@
 import React from "react";
-
+import "./style.css";
 export default () => {
   return (
     <footer>
+      <div className="container11">
+        <br />
+      </div>
       <br />
-      <div className="card text-center card  mb-3">
+      <div className="card text-center card  mb-3 ">
         <div className="card-body">
           <section className="contact-section bg-black">
             <div className="container">
@@ -55,7 +58,7 @@ export default () => {
 
               <div className="social d-flex justify-content-center">
                 <a
-                  href="https://www.linkedin.com/in/gabriela-sosa-gavil%C3%A1n-1a3821162/"
+                  href="https://www.linkedin.com/in/gabriela-sosa-gavilan/"
                   className="mx-2 text-info"
                 >
                   <i className="fab fa-linkedin" />

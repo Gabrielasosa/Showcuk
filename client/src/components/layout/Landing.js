@@ -19,7 +19,7 @@ class Landing extends Component {
           autoplay="autoplay"
           loop="loop"
           preload="auto"
-          className="embed-responsive embed-responsive-16by9 "
+          className="embed-responsive embed-responsive-16by9 capa_a_ocultar "
         >
           <source
             src="../../img/showcuk.mp4"
@@ -27,7 +27,7 @@ class Landing extends Component {
             className="vid"
           />
         </video>
-        <div className="dark-overlay landing-inner text-light">
+        <div className="dark-overlay landing-inner text-light capa_a_ocultar">
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">

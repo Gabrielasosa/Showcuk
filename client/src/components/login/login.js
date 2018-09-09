@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
-import Commongroup from "../common/commongroups";
+import Commongroup from "../common/form/commongroups";
 class Login extends Component {
   constructor() {
     super();

@@ -30,7 +30,7 @@ class Dashboard extends Component {
               Aún no ha configurado tu perfil, por favor agregue su información
             </p>
             <Link to="/create-profile" className="btn btn-lg btn-info">
-              Configuración del Perfil
+              Configura tu Perfil
             </Link>
           </div>
         );

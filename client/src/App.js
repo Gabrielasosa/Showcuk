@@ -7,6 +7,8 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 
+import PriveteRoute from "./components/common/PrivateRoute";
+
 import Landing from "./components/layout/Landing";
 import Register from "./components/register/Register";
 import Login from "./components/login/login";
@@ -14,6 +16,9 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Dashboard from "./components/dashboard/Dashboard";
 import { clearCurrentProfile } from "./actions/profileActions";
+import PrivateRoute from "./components/common/PrivateRoute";
+import CreateProfile from "./components/createProfile/CreateProfile";
+// import Error from "./components/error/Error";
 
 // verificacion del token
 if (localStorage.jwtToken) {
@@ -47,7 +52,13 @@ class App extends Component {
             <Switch className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
+              {/* <Route component={Error} /> */}
             </Switch>
             <Footer />
           </div>

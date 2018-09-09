@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
-import Commongroup from "../common/commongroups";
+import Commongroup from "../common/form/commongroups";
 
 class Register extends Component {
   constructor() {

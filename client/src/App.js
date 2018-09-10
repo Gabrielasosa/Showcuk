@@ -19,6 +19,8 @@ import CreateProfile from "./components/createProfile/CreateProfile";
 import EditProfile from "./components/editProfile/EditProfile";
 import AddExperience from "./components/addCertificates/AddExperience";
 import AddEducation from "./components/addCertificates/AddEducation";
+import Profiles from "./components/profiles/Profiles";
+
 // import Error from "./components/error/Error";
 
 // verificacion del token
@@ -53,6 +55,8 @@ class App extends Component {
             <Switch className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/profiles" component={Profiles} />
+
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
                 exact

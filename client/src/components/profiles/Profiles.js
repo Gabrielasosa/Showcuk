@@ -5,6 +5,7 @@ import ProfileItem from "./ProfileItem";
 import { getProfiles } from "../../actions/profileActions";
 import Loanding from "../common/loading/Loanding";
 
+//componente para ver tdos los perfiles de chefs
 class Profiles extends Component {
   componentDidMount() {
     this.props.getProfiles();

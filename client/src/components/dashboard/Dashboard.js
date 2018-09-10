@@ -8,6 +8,7 @@ import ProfileActions from "./ProfileActions";
 import Experience from "./Experience";
 import Education from "./Education";
 
+//perfil principal de un chef
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();

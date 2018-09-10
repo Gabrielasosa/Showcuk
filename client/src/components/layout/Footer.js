@@ -21,7 +21,7 @@ export default () => {
                       </h4>
                       <hr className="my-4" />
                       <div className="small text-black-50 card-text">
-                        4923 Market Street, Orlando FL
+                        4923 Marbella, Málaga AN
                       </div>
                     </div>
                   </div>

@@ -7,8 +7,6 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 
-import PriveteRoute from "./components/common/PrivateRoute";
-
 import Landing from "./components/layout/Landing";
 import Register from "./components/register/Register";
 import Login from "./components/login/login";
@@ -18,6 +16,9 @@ import Dashboard from "./components/dashboard/Dashboard";
 import { clearCurrentProfile } from "./actions/profileActions";
 import PrivateRoute from "./components/common/PrivateRoute";
 import CreateProfile from "./components/createProfile/CreateProfile";
+import EditProfile from "./components/editProfile/EditProfile";
+import AddExperience from "./components/addCertificates/AddExperience";
+import AddEducation from "./components/addCertificates/AddEducation";
 // import Error from "./components/error/Error";
 
 // verificacion del token
@@ -57,6 +58,21 @@ class App extends Component {
                 exact
                 path="/create-profile"
                 component={CreateProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/add-expirience"
+                component={AddExperience}
+              />
+              <PrivateRoute
+                exact
+                path="/add-education"
+                component={AddEducation}
               />
               {/* <Route component={Error} /> */}
             </Switch>

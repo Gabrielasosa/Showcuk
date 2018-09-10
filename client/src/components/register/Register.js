@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
-import Commongroup from "../common/form/commongroups";
+import FormUsergroups from "../common/form/FormUsergroups";
 
 class Register extends Component {
   constructor() {
@@ -60,7 +60,7 @@ class Register extends Component {
               <h1 className="display-4 text-center">Regístrate</h1>
               <p className="lead text-center">Crea tu cuenta en Showcuk </p>
               <form noValidate onSubmit={this.onSubmit}>
-                <Commongroup
+                <FormUsergroups
                   placeholder="Nombre"
                   name="name"
                   value={this.state.name}
@@ -68,7 +68,7 @@ class Register extends Component {
                   error={errors.name}
                 />
 
-                <Commongroup
+                <FormUsergroups
                   type="email"
                   placeholder="Email"
                   name="email"
@@ -81,7 +81,7 @@ class Register extends Component {
                     Utilizamos gravatar para la imagen del perfil
                   </small> */}
 
-                <Commongroup
+                <FormUsergroups
                   type="password"
                   placeholder="Contraseña"
                   name="password"
@@ -89,7 +89,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.password}
                 />
-                <Commongroup
+                <FormUsergroups
                   type="password"
                   placeholder="Confirmación de la contraseña"
                   name="password2"

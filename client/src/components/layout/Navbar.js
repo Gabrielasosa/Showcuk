@@ -19,6 +19,11 @@ class Navbar extends Component {
       //la funcion solo se muestra cuando un usuario inicia sesion
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
+          <Link className="nav-link" to="/dashboard">
+            Volver al Perfil
+          </Link>
+        </li>
+        <li className="nav-item">
           <a
             href=""
             onClick={this.onLogoutClick.bind(this)}
@@ -28,7 +33,7 @@ class Navbar extends Component {
               className="rounded-circle"
               src={user.avatar}
               alt={user.name}
-              style={{ width: "40px", marginRight: "8px" }}
+              style={{ width: "30px", marginRight: "8px" }}
               title="Debes tener un Gravatar enlazado a tu correo electrónico para mostrar una imagen"
             />
             <i class="fas fa-sign-out-alt" /> <span> Salir</span>

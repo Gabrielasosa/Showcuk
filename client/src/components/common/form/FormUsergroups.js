@@ -3,7 +3,7 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 
 //este componente se reutiliza para el formulario
-const Commongroup = ({
+const FormUsergroups = ({
   name,
   placeholder,
   value,
@@ -34,7 +34,7 @@ const Commongroup = ({
   );
 };
 
-Commongroup.propTypes = {
+FormUsergroups.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
@@ -44,7 +44,7 @@ Commongroup.propTypes = {
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.string
 };
-Commongroup.defaultprops = {
+FormUsergroups.defaultprops = {
   type: "text"
 };
-export default Commongroup;
+export default FormUsergroups;

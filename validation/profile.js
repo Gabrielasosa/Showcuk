@@ -8,18 +8,18 @@ module.exports = function validateProfileInput(data) {
   data.skills = !isEmpty(data.skills) ? data.skills : "";
   //handle validate
   if (!Validator.isLength(data.handle, { min: 2, max: 45 })) {
-    errors.handle = "Handle debe tener entre 2 y 45 caracteres";
+    errors.handle = "La URL del Perfil tener entre 2 y 45 caracteres";
   }
   if (Validator.isEmpty(data.handle)) {
-    errors.handle = "Handle es obligatorio";
+    errors.handle = "URL Obligatorio";
   }
   //status validate
   if (Validator.isEmpty(data.status)) {
-    errors.status = "status field es obligatorio";
+    errors.status = "El puesto de trabajo es obligatoria";
   }
   //skills validate
   if (Validator.isEmpty(data.skills)) {
-    errors.skills = "skils es obligatorio";
+    errors.skills = "Las habilidades son  obligatorias";
   }
   //website validate
   if (!isEmpty(data.website)) {

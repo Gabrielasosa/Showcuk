@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
-import Commongroup from "../common/form/commongroups";
+import FormUsergroups from "../common/form/FormUsergroups";
 class Login extends Component {
   constructor() {
     super();
@@ -59,7 +59,7 @@ class Login extends Component {
               <div className="col-md-8 m-auto">
                 <h1 className="display-4 text-center">Accede a Showcuk</h1>
                 <form onSubmit={this.onSubmit}>
-                  <Commongroup
+                  <FormUsergroups
                     placeholder="Email"
                     name="email"
                     type="value"
@@ -68,7 +68,7 @@ class Login extends Component {
                     error={errors.email}
                   />
 
-                  <Commongroup
+                  <FormUsergroups
                     placeholder="Contraseña"
                     name="password"
                     type="password"

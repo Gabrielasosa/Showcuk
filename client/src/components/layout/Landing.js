@@ -32,7 +32,13 @@ class Landing extends Component {
             <div className="row">
               <div className="col-md-12 text-center">
                 <h1 className="display-3 mb-4">Showcuk</h1>
-                <p className="lead">Registrate y conoce mas Chefs</p>
+                <p className="lead">
+                  Registrate y conoce mas
+                  <Link to="/profiles">
+                    {" "}
+                    <span> Chefs</span>
+                  </Link>
+                </p>
                 <hr />
 
                 <Link className="btn btn-outline-info btn-lg  mr-2" to="/login">

@@ -134,7 +134,7 @@ class CreateProfile extends Component {
               </small>
               <form onSubmit={this.onSubmit}>
                 <FormUsergroups
-                  placeholder="* Profile Handle"
+                  placeholder="* URL del perfil"
                   name="handle"
                   value={this.state.handle}
                   onChange={this.onChange}

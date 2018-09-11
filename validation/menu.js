@@ -6,6 +6,7 @@ module.exports = function validateMenuInput(data) {
   data.title = !isEmpty(data.title) ? data.title : "";
   data.description = !isEmpty(data.description) ? data.description : "";
   data.price = !isEmpty(data.price) ? data.price : "";
+  data.image = !isEmpty(data.image) ? data.image : "";
 
   //title validate
   if (Validator.isEmpty(data.title)) {

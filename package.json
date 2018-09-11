@@ -13,6 +13,7 @@
   "author": "Gabriela Sosa",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "currently": "0.0.8",
@@ -25,6 +26,7 @@
     "passport-jwt": "^4.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-images-upload": "^1.2.3",
     "redux": "^4.0.0",
     "validator": "^10.7.0",
     "video-react": "^0.13.0"

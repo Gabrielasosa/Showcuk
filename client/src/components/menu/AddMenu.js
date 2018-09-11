@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import FormUsergroups from "../common/form/FormUsergroups";
 import Formprofilegroups from "../common/form/FormProfilegroups";
 import { addMenu } from "../../actions/profileActions";
-
+import ImageUploader from "react-images-upload";
 class AddMenu extends Component {
   constructor(props) {
     super(props);
@@ -15,14 +15,22 @@ class AddMenu extends Component {
       price: "",
       image: "",
       errors: {},
-      disabled: false
+      disabled: false,
+      pictures: []
     };
-
+    this.onDrop = this.onDrop.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onCheck = this.onCheck.bind(this);
   }
-
+  state = {
+    selecedFile: null
+  };
+  onDrop(picture) {
+    this.setState({
+      pictures: this.state.pictures.concat(picture)
+    });
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
@@ -77,22 +85,15 @@ class AddMenu extends Component {
                   onChange={this.onChange}
                   error={errors.title}
                 />
-                <FormUsergroups
+                {/* <FormUsergroups
                   placeholder="* Foto"
                   name="image"
                   value={this.state.image}
                   onChange={this.onChange}
                   error={errors.image}
                   type="file"
-                />
-                <input
-                  placeholder="* Foto"
-                  name="image"
-                  value={this.state.image}
-                  onChange={this.onChange}
-                  error={errors.image}
-                  type="file"
-                />
+                /> */}
+
                 <FormUsergroups
                   placeholder="* Precio"
                   name="price"
@@ -113,6 +114,7 @@ class AddMenu extends Component {
                   type="submit"
                   value="Guardar"
                   className="btn btn-info btn-block mt-4"
+                  onChange={this.onChange}
                 />
               </form>
             </div>

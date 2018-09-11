@@ -28,7 +28,7 @@ class ProfileItem extends Component {
               <p>
                 {profile.status}{" "}
                 {isEmpty(profile.company) ? null : (
-                  <span>at {profile.company}</span>
+                  <span>en {profile.company}</span>
                 )}
               </p>
               <p>

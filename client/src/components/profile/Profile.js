@@ -44,6 +44,7 @@ class Profile extends Component {
           <ProfileCreds
             education={profile.education}
             experience={profile.experience}
+            menu={profile.menu}
           />
         </div>
       );

@@ -316,6 +316,7 @@ router.post(
     if (!isValid) {
       return res.status(400).json(errors);
     }
+
     Profile.findOne({ user: req.user.id }).then(profile => {
       const newMenu = {
         title: req.body.title,

@@ -10,19 +10,19 @@ module.exports = function validateEducationInput(data) {
 
   //school validate
   if (Validator.isEmpty(data.school)) {
-    errors.school = "Campo colegio es requerido";
+    errors.school = "Campo colegio es necesario";
   }
   //degree validate
   if (Validator.isEmpty(data.degree)) {
-    errors.degree = "Campo titulo es requerido";
+    errors.degree = "Campo titulo es necesario";
   }
   //fieldofstudy validate
   if (Validator.isEmpty(data.fieldofstudy)) {
-    errors.fieldofstudy = "Campo especialidad es requerido";
+    errors.fieldofstudy = "Campo especialidad es necesario";
   }
   //from validate
   if (Validator.isEmpty(data.from)) {
-    errors.from = "Campo Fecha es requerido";
+    errors.from = "Campo Fecha es necesario";
   }
   return {
     errors,

@@ -7,7 +7,6 @@ const FormUsergroups = ({
   name,
   placeholder,
   value,
-  label,
   error,
   info,
   type,

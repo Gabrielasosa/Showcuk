@@ -66,11 +66,41 @@ export const addEducation = (eduData, history) => dispatch => {
       })
     );
 };
+// Añadir Menu
+export const addMenu = (menData, history) => dispatch => {
+  axios
+    .post("/api/profile/menu", menData)
+    .then(res => history.push("/dashboard"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
 
 //Eliminar experiencia
 export const deleteExperience = id => dispatch => {
   axios
     .delete(`/api/profile/experience/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// Eliminar menu
+export const deleteMenu = id => dispatch => {
+  axios
+    .delete(`/api/profile/menu/${id}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,

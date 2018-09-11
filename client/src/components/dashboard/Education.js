@@ -39,7 +39,7 @@ class Education extends Component {
           <thead>
             <tr>
               <th>Escuela</th>
-              <th>Titulacin</th>
+              <th>Titulación</th>
               <th>Fechas</th>
               <th />
             </tr>

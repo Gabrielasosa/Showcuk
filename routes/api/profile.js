@@ -7,7 +7,7 @@ const passport = require("passport");
 const validateProfileInput = require("../../validation/profile");
 const validateExperienceInput = require("../../validation/experience");
 const validateEducationInput = require("../../validation/education");
-
+const validateMenuInput = require("../../validation/menu");
 //Load profile Model
 const Profile = require("../../models/Profile");
 //load user Model
@@ -111,7 +111,6 @@ router.get("/user/:user_id", (req, res) => {
   *desc     Create or edit user profile
   *access   Private
 */
-
 router.post(
   "/",
 
@@ -299,6 +298,62 @@ router.delete(
         res.json({ succes: true })
       );
     });
+  }
+);
+
+/*
+  *route    POST api/profile/menu
+  *desc     add menu route
+  *access   private
+*/
+
+router.post(
+  "/menu",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validateMenuInput(req.body);
+    //check validation
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      const newMenu = {
+        title: req.body.title,
+        price: req.body.price,
+        image: req.body.image,
+        description: req.body.description
+      };
+      //add to menu array
+      profile.menu.unshift(newMenu);
+
+      profile.save().then(profile => res.json(profile));
+    });
+  }
+);
+/*
+  *route    DELETE api/profile/menu/:men_id
+  *desc     Delete menu from profile
+  *access   private
+*/
+
+router.delete(
+  "/menu/:men_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        //get remove index
+        const removeIndex = profile.menu
+          .map(item => item.id)
+          .indexOf(req.params.men_id);
+
+        //splice out of array
+        profile.menu.splice(removeIndex, 1);
+
+        //save
+        profile.save().then(profile => res.json(profile));
+      })
+      .catch(err => res.status(4004).json(err));
   }
 );
 module.exports = router;

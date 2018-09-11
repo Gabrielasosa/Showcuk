@@ -21,6 +21,7 @@ import AddExperience from "./components/addCertificates/AddExperience";
 import AddEducation from "./components/addCertificates/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
+import AddMenu from "./components/menu/AddMenu";
 
 // import Error from "./components/error/Error";
 
@@ -80,6 +81,7 @@ class App extends Component {
                 path="/add-education"
                 component={AddEducation}
               />
+              <PrivateRoute exact path="/add-menu" component={AddMenu} />
               {/* <Route component={Error} /> */}
             </Switch>
             <Footer />

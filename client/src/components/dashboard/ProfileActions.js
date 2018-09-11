@@ -15,6 +15,10 @@ const ProfileActions = () => {
         <i className="fas fa-graduation-cap text-info mr-1" />
         Añadir Formación
       </Link>
+      <Link to="/add-menu" className="btn btn-light">
+        <i class="fas fa-utensils text-info  mr-1" />
+        Añadir Menu
+      </Link>
     </div>
   );
 };

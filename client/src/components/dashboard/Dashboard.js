@@ -7,6 +7,7 @@ import Loading from "../common/loading/Loanding";
 import ProfileActions from "./ProfileActions";
 import Experience from "./Experience";
 import Education from "./Education";
+import Menu from "./Menu";
 
 //perfil principal de un chef
 class Dashboard extends Component {
@@ -38,6 +39,7 @@ class Dashboard extends Component {
             <ProfileActions />
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
+            <Menu menu={profile.menu} />
             <div style={{ marginBottom: "60px" }} />
             <button
               onClick={this.onDeleteClick.bind(this)}

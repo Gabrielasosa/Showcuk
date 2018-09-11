@@ -99,7 +99,28 @@ const ProfileSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+
+  //añadiendo menu
+  menu: [
+    {
+      title: {
+        type: String,
+        required: true
+      },
+      description: {
+        type: String,
+        required: true
+      },
+      image: {
+        type: String
+      },
+      price: {
+        type: String,
+        required: true
+      }
+    }
+  ]
 });
 //--exporto el modelo de mongose para el perfil
 module.exports = Profile = mongoose.model("profile", ProfileSchema);

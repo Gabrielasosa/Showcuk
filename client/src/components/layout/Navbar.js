@@ -36,7 +36,7 @@ class Navbar extends Component {
               style={{ width: "30px", marginRight: "8px" }}
               title="Debes tener un Gravatar enlazado a tu correo electrónico para mostrar una imagen"
             />
-            <i class="fas fa-sign-out-alt" /> <span> Salir</span>
+            <i className="fas fa-sign-out-alt" /> <span> Salir</span>
           </a>
         </li>
       </ul>

@@ -7,7 +7,7 @@ export default () => {
         <br />
       </div>
       <br />
-      <div className="card text-center card  mb-3 ">
+      {/* <div className="card text-center card  mb-3 ">
         <div className="card-body">
           <section className="contact-section bg-black">
             <div className="container">
@@ -72,12 +72,11 @@ export default () => {
               </div>
             </div>
           </section>
-        </div>
-        <div className="card-footer text-muted">
-          {" "}
-          Gabriela Sosa &copy;
-          {new Date().getFullYear()}
-        </div>
+        </div> */}
+      <div className="card-footer text-muted text-center bg-dark">
+        {" "}
+        Gabriela Sosa &copy;
+        {new Date().getFullYear()}
       </div>
     </footer>
   );

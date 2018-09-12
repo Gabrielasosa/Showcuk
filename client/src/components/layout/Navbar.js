@@ -85,15 +85,15 @@ class Navbar extends Component {
                 <span className="sr-only" />
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/gabriela">
+                  About me
+                </Link>
+              </li>
+              {/* <li className="nav-item">
                 <Link className="nav-link" to="/">
                   Link
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Link
-                </Link>
-              </li>
+              </li> */}
             </ul>
 
             {isAuthenticated ? authLinks : guestLinks}

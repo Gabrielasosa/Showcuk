@@ -22,6 +22,7 @@ import AddEducation from "./components/addCertificates/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import AddMenu from "./components/menu/AddMenu";
+import gabriela from "./Gabriela/gabriela";
 
 // import Error from "./components/error/Error";
 
@@ -54,6 +55,8 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Route exact path="/" component={Landing} />
+            <Route exact path="/gabriela" component={gabriela} />
+
             <Switch className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />

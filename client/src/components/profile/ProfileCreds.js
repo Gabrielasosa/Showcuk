@@ -51,7 +51,7 @@ class ProfileCreds extends Component {
           <strong>Titulación:</strong> {edu.degree}
         </p>
         <p>
-          <strong>Especualidad:</strong> {edu.fieldofstudy}
+          <strong>Especialidad:</strong> {edu.fieldofstudy}
         </p>
         <p>
           {edu.description === "" ? null : (

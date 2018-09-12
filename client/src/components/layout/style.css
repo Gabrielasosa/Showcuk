@@ -4,10 +4,10 @@
   background-position: center;
   height: auto;
   margin-top: -1vh;
-  margin-bottom: -15vh;
+  margin-bottom: -25vh;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 868px) {
   .capa_a_ocultar {
     display: none;
   }

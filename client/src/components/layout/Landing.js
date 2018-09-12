@@ -4,6 +4,7 @@ import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import "./style.css";
 import Container from "./Container";
+import Menudetail from "../EspMenu/Menudetail";
 
 class Landing extends Component {
   componentDidMount() {
@@ -16,49 +17,58 @@ class Landing extends Component {
     return (
       <div className="">
         <div className="landing" />
-        <video
-          autoplay="autoplay"
-          loop="loop"
-          preload="auto"
-          className="embed-responsive embed-responsive-16by9 capa_a_ocultar "
-        >
-          <source
-            src="../../img/showcuk.mp4"
-            type="video/mp4"
-            className="vid"
-          />
-        </video>
-        <div className="dark-overlay landing-inner text-light capa_a_ocultar">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Showcuk</h1>
-                <p className="lead">
-                  Registrate y conoce mas
-                  <Link to="/profiles">
-                    {" "}
-                    <span> Chefs</span>
+        <div className="uni">
+          <video
+            autoplay="autoplay"
+            loop="loop"
+            preload="auto"
+            className="embed-responsive embed-responsive-16by9 capa_a_ocultar "
+          >
+            <source
+              src="../../img/showcuk.mp4"
+              type="video/mp4"
+              className="vid"
+            />
+          </video>
+          <div className="dark-overlay landing-inner text-light capa_a_ocultar">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12 text-center">
+                  <h1 className="display-3 mb-4">Showcuk</h1>
+                  <p className="lead">
+                    Registrate y conoce mas
+                    <Link to="/profiles">
+                      <span className="text-white text-uppercase"> Chefs</span>
+                    </Link>
+                  </p>
+                  <hr />
+
+                  <Link
+                    className="btn btn-outline-info btn-lg  mr-2"
+                    to="/login"
+                  >
+                    <i className="fas fa-sign-in-alt" /> <span>Acceder</span>
                   </Link>
-                </p>
-                <hr />
 
-                <Link className="btn btn-outline-info btn-lg  mr-2" to="/login">
-                  <i className="fas fa-sign-in-alt" /> <span>Acceder</span>
-                </Link>
-
-                <Link
-                  className="btn btn-lg btn-outline-secondary btn-lg  mr-2"
-                  to="/register"
-                >
-                  <i className="fas fa-user" /> <span> Registrate </span>
-                </Link>
+                  <Link
+                    className="btn btn-lg btn-outline-secondary btn-lg  mr-2"
+                    to="/register"
+                  >
+                    <i className="fas fa-user" /> <span> Registrate </span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <br />
+        <br />
+        <br />
         <Container />
         <br />
-        {/* menuEspeciales */}
+        <br />
+        <Menudetail />
+        <br />
       </div>
     );
   }

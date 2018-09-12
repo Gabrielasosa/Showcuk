@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const StarMenuSchema = new Schema({
   name: { type: String, required: true },
   price: { type: String, required: true },
-  image: { type: String, required: true },
+  image: { type: String },
   description: { type: String }
 });
 

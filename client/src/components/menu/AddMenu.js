@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import FormUsergroups from "../common/form/FormUsergroups";
 import Formprofilegroups from "../common/form/FormProfilegroups";
 import { addMenu } from "../../actions/profileActions";
-import ImageUploader from "react-images-upload";
+// import ImageUploader from "react-images-upload";
 class AddMenu extends Component {
   constructor(props) {
     super(props);

@@ -84,6 +84,7 @@ class App extends Component {
               <PrivateRoute exact path="/add-menu" component={AddMenu} />
               {/* <Route component={Error} /> */}
             </Switch>
+
             <Footer />
           </div>
         </Router>

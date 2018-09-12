@@ -1,0 +1,34 @@
+div.productos {
+    margin-top: 30px;
+}
+
+ul.lista-productos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.lista-productos li {
+    padding: 20px;
+    text-align: center;
+}
+
+@media (min-width:768px) {
+    ul.lista-productos li {
+        float: left;
+        width: 25%;
+    }
+}
+
+ul.lista-productos li img {
+    max-width: 100%;
+}
+
+ul.lista-productos li a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 18px;
+}

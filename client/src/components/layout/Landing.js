@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import "./style.css";
+import Container from "./Container";
 
 class Landing extends Component {
   componentDidMount() {
@@ -55,6 +56,9 @@ class Landing extends Component {
             </div>
           </div>
         </div>
+        <Container />
+        <br />
+        {/* menuEspeciales */}
       </div>
     );
   }
